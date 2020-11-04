@@ -688,38 +688,38 @@ namespace Garage3.Controllers
 
 
 
-        public async Task<IActionResult> ParkingSpaceOverview()
-        {          
-            var spaces = await _context.ParkingSpace
-                .Include(s => s.Parking)
-                .ThenInclude(s => s.ParkedVehicle)
-                .Select(p => new ParkingSpaceOverviewViewModel
-                {
-                    ID = p.ID,
-                    ParkingSpaceNum = p.ParkingSpaceNum,
-                    Available = p.Available,
-                    RegNum = p.Parking.Select(p => p.ParkedVehicle.RegNum).FirstOrDefault(),
-                    ParkedVehicleId = p.Parking.Select(p => p.ParkedVehicle.ID).FirstOrDefault()
-                })
-                .ToListAsync();
+        //public async Task<IActionResult> ParkingSpaceOverview()
+        //{          
+        //    var spaces = await _context.ParkingSpace
+        //        .Include(s => s.Parking)
+        //        .ThenInclude(s => s.ParkedVehicle)
+        //        .Select(p => new ParkingSpaceOverviewViewModel
+        //        {
+        //            ID = p.ID,
+        //            ParkingSpaceNum = p.ParkingSpaceNum,
+        //            Available = p.Available,
+        //            RegNum = p.Parking.Select(p => p.ParkedVehicle.RegNum).FirstOrDefault(),
+        //            ParkedVehicleId = p.Parking.Select(p => p.ParkedVehicle.ID).FirstOrDefault()
+        //        })
+        //        .ToListAsync();
 
-            var model = new List<ParkingSpaceOverviewViewModel>();
+        //    var model = new List<ParkingSpaceOverviewViewModel>();
 
-            foreach (var space in spaces)
-            {
-                model.Add(new ParkingSpaceOverviewViewModel
-                {
-                    ID = space.ID,
-                    ParkingSpaceNum = space.ParkingSpaceNum,
-                    Available = space.Available,
-                    RegNum = space.Parking.Select(p => p.ParkedVehicle.RegNum).FirstOrDefault(),
-                    ParkedVehicleId = space.Parking.Select(p => p.ParkedVehicle.ID).FirstOrDefault()
-                });
-            }
+        //    foreach (var space in spaces)
+        //    {
+        //        model.Add(new ParkingSpaceOverviewViewModel
+        //        {
+        //            ID = space.ID,
+        //            ParkingSpaceNum = space.ParkingSpaceNum,
+        //            Available = space.Available,
+        //            RegNum = space.Parking.Select(p => p.ParkedVehicle.RegNum).FirstOrDefault(),
+        //            ParkedVehicleId = space.Parking.Select(p => p.ParkedVehicle.ID).FirstOrDefault()
+        //        });
+        //    }
 
            
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
 
         // Check if there are parking spaces available

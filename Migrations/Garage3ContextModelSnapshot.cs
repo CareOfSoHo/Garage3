@@ -322,7 +322,7 @@ namespace Garage3.Migrations
                         .IsRequired();
 
                     b.HasOne("Garage3.Models.Entities.ParkingSpace", "ParkingSpace")
-                        .WithMany()
+                        .WithMany("Parking")
                         .HasForeignKey("ParkingSpaceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Garage3.Migrations
 {
     [DbContext(typeof(Garage3Context))]
-    [Migration("20201029135902_Init")]
+    [Migration("20201101104144_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -324,7 +324,7 @@ namespace Garage3.Migrations
                         .IsRequired();
 
                     b.HasOne("Garage3.Models.Entities.ParkingSpace", "ParkingSpace")
-                        .WithMany()
+                        .WithMany("Parking")
                         .HasForeignKey("ParkingSpaceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
